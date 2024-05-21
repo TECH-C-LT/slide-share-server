@@ -45,6 +45,7 @@ func main() {
 	slideController := slide_http.NewSlideController(slideUsecase)
 
 	e := echo.New()
+	e.Use(middleware.Logger())
 
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
 		AllowOrigins:     []string{"http://localhost:3000", os.Getenv("FE_URL")},
